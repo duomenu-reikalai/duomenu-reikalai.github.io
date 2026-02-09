@@ -6,4 +6,4 @@ order: 4
 
 Viešų valstybės ir pasaulio duomenų ⟨ analitika · įžvalgos · iliustracijos ⟩
 
-By: VšĮ Atvirųjų duomenų laboratorija
+© VšĮ Atvirųjų duomenų laboratorija
