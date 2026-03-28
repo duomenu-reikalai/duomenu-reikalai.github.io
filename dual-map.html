@@ -155,8 +155,8 @@
   <script>
     const DEFAULT_CENTER = [55.220, 24.7318];
 
-    const leftMap = L.map("left-map", { zoomControl: false }).setView(DEFAULT_CENTER, 4);
-    const rightMap = L.map("right-map", { zoomControl: false }).setView([DEFAULT_CENTER[1], DEFAULT_CENTER[0]], 4);
+    const leftMap = L.map("left-map", { zoomControl: false }).setView(DEFAULT_CENTER, 10);
+    const rightMap = L.map("right-map", { zoomControl: false }).setView([DEFAULT_CENTER[1], DEFAULT_CENTER[0]], 10);
 
     const tileLayerOptions = {
       maxZoom: 10,
