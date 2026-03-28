@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koordinačių sukeitiklis Lietuvos gyventojams</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #app {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid #ddd;
+    }
+
+    .panel:last-child {
+      border-right: none;
+    }
+
+    .toolbar {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      padding: 12px;
+      max-width: calc(100% - 24px);
+      box-sizing: border-box;
+    }
+
+    .toolbar h2 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .toolbar p {
+      margin: 6px 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 0;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      background: #f7f7f7;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #efefef;
+    }
+
+    .map {
+      width: 100%;
+      height: 100%;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .warning {
+      color: #8a4b00;
+    }
+
+    .muted {
+      color: #555;
+    }
+
+    @media (max-width: 900px) {
+      #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .panel {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .panel:last-child {
+        border-bottom: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <section class="panel">
+      <div class="toolbar">
+        <h2>LIETUVA</h2>
+        <p>Priartink Lietuvą ir žemėlapyje pažymėk norimą vietą...</p>
+        <p><strong>Pasirinktos kooridnatės:</strong> <span id="selected-coords" class="mono">—</span></p>
+      </div>
+      <div id="left-map" class="map"></div>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <h2>JUNGTINAI ARABŲ EMYRATAI</h2>
+        <p>Sukeitus koordinates vietomis mes atsiduriame čia:</p>
+        <p class="mono">(lat, lon) → (lon, lat)</p>
+        <p><strong>Sukeistos koordinatės:</strong> <span id="swapped-coords" class="mono">—</span></p>
+        <p id="status" class="warning"></p>
+      </div>
+      <div id="right-map" class="map"></div>
+    </section>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    const DEFAULT_CENTER = [55.220, 24.7318];
+
+    const leftMap = L.map("left-map", { zoomControl: false }).setView(DEFAULT_CENTER, 4);
+    const rightMap = L.map("right-map", { zoomControl: false }).setView([DEFAULT_CENTER[1], DEFAULT_CENTER[0]], 4);
+
+    const tileLayerOptions = {
+      maxZoom: 10,
+      attribution: '&copy; OpenStreetMap contributors'
+    };
+
+    
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      maxZoom: 19
+    }).addTo(leftMap);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      maxZoom: 19
+    }).addTo(rightMap);
+
+    const leftMarker = L.marker(DEFAULT_CENTER).addTo(leftMap);
+    const rightMarker = L.marker([DEFAULT_CENTER[1], DEFAULT_CENTER[0]]).addTo(rightMap);
+
+    function formatCoord(value) {
+      return Number(value).toFixed(6);
+    }
+
+    function isValidLatLng(lat, lng) {
+      return lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
+    }
+
+    function updateFromPoint(lat, lng, label = "Selected point") {
+      const swappedLat = lng;
+      const swappedLng = lat;
+
+      document.getElementById("selected-coords").textContent = `${formatCoord(lat)}, ${formatCoord(lng)}`;
+      document.getElementById("swapped-coords").textContent = `${formatCoord(swappedLat)}, ${formatCoord(swappedLng)}`;
+
+      leftMarker.setLatLng([lat, lng]).bindPopup(`${label}<br>${formatCoord(lat)}, ${formatCoord(lng)}`);
+      leftMap.panTo([lat, lng]);
+
+      const status = document.getElementById("status");
+      if (!isValidLatLng(swappedLat, swappedLng)) {
+        status.textContent = "Swapped coordinates are not a valid latitude/longitude pair, so the right map cannot center there.";
+        rightMarker.remove();
+        return;
+      }
+
+      status.textContent = "";
+      if (!rightMap.hasLayer(rightMarker)) {
+        rightMarker.addTo(rightMap);
+      }
+
+      rightMarker
+        .setLatLng([swappedLat, swappedLng])
+        .bindPopup(`Swapped point<br>${formatCoord(swappedLat)}, ${formatCoord(swappedLng)}`);
+
+      rightMap.setView([swappedLat, swappedLng], Math.max(leftMap.getZoom(), 4));
+    }
+
+    
+
+    leftMap.on("click", (event) => {
+      updateFromPoint(event.latlng.lat, event.latlng.lng, "Clicked point");
+    });
+
+
+    updateFromPoint(DEFAULT_CENTER[0], DEFAULT_CENTER[1], "Default point");
+  </script>
+</body>
+</html>
