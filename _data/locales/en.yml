@@ -11,7 +11,7 @@ layout:
 tabs:
   # format: <filename_without_extension>: <value>
   home: Pradžia
-  categories: _delete_
+  #categories: _delete_
   tags: Temos
   archives: Laiko juosta
   about: Apie
@@ -19,26 +19,26 @@ tabs:
 # the text displayed in the search bar & search results
 search:
   hint: ieškoti
-  cancel: Cancel
+  cancel: atšaukti
   no_results: Oops! Nieko nerasta.
 
 panel:
   lastmod: Naujausi postai
   trending_tags: Dažniausios temos
-  toc: Contents
+  toc: Turinys
 
-copyright:
-  # Shown at the bottom of the post
-  license:
-    template: Turinio naudojimo sąlygos - :LICENSE_NAME.
-    name: CC BY-SA 4.0
-    link: https://creativecommons.org/licenses/by-sa/4.0/deed.lt
-
-  # Displayed in the footer
-  brief: Some rights reserved.
-  verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+#copyright:
+#  # Shown at the bottom of the post
+#  license:
+#    template: Turinio naudojimo sąlygos - :LICENSE_NAME.
+#    name: CC BY-SA 4.0
+#    link: https://creativecommons.org/licenses/by-sa/4.0/deed.lt
+#
+#  # Displayed in the footer
+#  brief: Some rights reserved.
+#  verbose: >-
+#    Except where otherwise noted, the blog posts on this site are licensed
+#    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
 meta: Using the :THEME theme for :PLATFORM.
 
