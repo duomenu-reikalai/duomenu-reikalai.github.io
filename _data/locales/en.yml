@@ -66,10 +66,10 @@ post:
     next: Naujesnis
     previous: Senesnis
     copy_code:
-      succeed: Copied!
+      succeed: Nukopijuota!
     share_link:
-      title: Copy link
-      succeed: Link copied successfully!
+      title: Kopijuoti nuorodą
+      succeed: Nukopijuota!
 
 
 
