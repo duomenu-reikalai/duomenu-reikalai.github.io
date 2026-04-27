@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-sharp-duotone fa-light fa-glasses
-order: 4
+order: 3
 ---
 
 Viešų valstybės ir pasaulio duomenų ⟨ analitika · įžvalgos · iliustracijos ⟩

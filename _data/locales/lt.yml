@@ -1,0 +1,85 @@
+# The layout text of site
+
+# ----- Commons label -----
+
+layout:
+  post: Post
+  category: Category
+  tag: Tag
+
+# The tabs of sidebar
+tabs:
+  # format: <filename_without_extension>: <value>
+  home: Pradžia
+  categories: _delete_
+  tags: Temos
+  archives: Laiko juosta
+  about: Apie
+
+# the text displayed in the search bar & search results
+search:
+  hint: ieškoti
+  cancel: Cancel
+  no_results: Oops! Nieko nerasta.
+
+panel:
+  lastmod: Naujausi postai
+  trending_tags: Dažniausios temos
+  toc: Contents
+
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: Turinio naudojimo sąlygos - :LICENSE_NAME.
+    name: CC BY-SA 4.0
+    link: https://creativecommons.org/licenses/by-sa/4.0/deed.lt
+
+  # Displayed in the footer
+  brief: Some rights reserved.
+  verbose: >-
+    Except where otherwise noted, the blog posts on this site are licensed
+    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+
+meta: Using the :THEME theme for :PLATFORM.
+
+not_found:
+  statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
+
+notification:
+  update_found: Ką tik publikuota nauja svetainės versija.
+  update: Atnaujinti
+
+# ----- Posts related labels -----
+
+post:
+  written_by: Autorius
+  posted: Sukurta
+  updated: Atnaujinta
+  words: words
+  pageview_measure: views
+  read_time:
+    unit: min 
+    prompt:  (skaitymo trukmė)
+  relate_posts: Susiję postai
+  share: Dalintis
+  button:
+    next: Naujesnis
+    previous: Senesnis
+    copy_code:
+      succeed: Nukopijuota!
+    share_link:
+      title: Kopijuoti nuorodą
+      succeed: Nukopijuota!
+
+
+
+# categories page
+categories:
+  category_measure:
+    singular: category
+    plural: categories
+  post_measure:
+    singular: post
+    plural: posts
+
+
