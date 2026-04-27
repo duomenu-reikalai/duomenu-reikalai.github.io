@@ -3,7 +3,7 @@ title: Nuodėgulio filibusteris
 description: Ši istorija yra apie tai, kaip filibusterio dėka Nuodėgulis vos netapo įtakingiausiu Lietuvos katinu ir sugriovė valdančiosios koalicijos klastingus planus.
 author: Statoras Datoras
 date: 2025-12-19 09:29:00 +0300
-tags: [geografija, no-data]
+tags: [politika]
 pin: true
 math: false
 mermaid: false
@@ -18,7 +18,7 @@ image:
 
 Nors istorija ir juokinga, tačiau nepamirškite, kad jos priežastys yra labai tamsios. Domėkitės politika ir dalyvaukite protestuose.
 
-## Filibusteris
+# Filibusteris
 
 Valdančiajai koalicijai bandant skubos tvarka priimti klastingą LRT įstatymo pataisą, opozicinės partijos vieningai pateikė 150 korekcijų šiai pataisai. Pati opozicija negali tiesiog atmesti klastingos pataisos (opozicija yra mažesnė), bet gali priversti Seimą pagal visas procedūras svarstyti kiekvieną savo siūlomą korekciją. Valdantiesiems buvo svarbu spėti priimti šią pataisą iki švenčių, nes nes vėliau aplinkybės atkeršyti LRT generalinei direktorei ją atleidžiant būtų mažiau palankios. Tad bet koks proceso gaišimas didina tikimybę, kad valdantiesiems nepavyks.
 
@@ -33,7 +33,7 @@ Visi suprantame, kad šios korekcijos yra butaforinės, jų tikslas nėra būti 
 
 Patyrinėkime, kas gi nutiko tą filibusterio naktį.
 
-## Filibusterio nakties balsavimų rezultatai
+# Filibusterio nakties balsavimų rezultatai
 
 Pirmiausia, įsidėmėkite šių spalvų reikšmes:
 
@@ -71,7 +71,7 @@ Tai 100% “nemuno aušros“ parlamentarų (įskaitant skardžių, gedvilą ir 
 Dar kartą pabrėžkim ironiją: būtent šie valdantieji savo vienu pavėlavimu atrišo opozicijai rankas toliau siūlyti šimtus naujų korekcijų ir taip visą šią įstatymo pataisą padaryti nepakeliamai skausminga.
 
 
-## Apie ką galvojo opozicija?
+# Apie ką galvojo opozicija?
 
 Atkreipkite dėmesį į pasikeitusius opozicijos balsavimus po Nuodėgulio įvykio:
 
@@ -82,9 +82,9 @@ Akivaizdu, kad opozicija niekada nesitikėjo, kad jų korekcijos bus priimtos (f
 
 Bet kuriuo atveju, gruodžio 16 d. 21:30 įvyko mažas stebuklas, kurio niekas nesitikėjo. Bet kuris galiausiai pristabdė labai pavojingų įstatymo pataisų priėmimą.
 
-## Kitos filibusterio nakties įdomybės
+# Kitos filibusterio nakties įdomybės
 
-### Seimo nariai, kurie neatlaikė iki galo
+## Seimo nariai, kurie neatlaikė iki galo
 
 Dalyvavo dalyvavo, balsavo balsavo, bet link vidurnakčio nusprendė, kad viskas čia beprasmiška ir reikia eit miegot:
 
@@ -121,7 +121,7 @@ Bet buvo ir jaunesnių anksti nuleidusių rankas:
 - **Vaida Aleknavičienė, socdemai (49 metai)**
 - **Rita Tamašunienė, valstiečiai (52 metai)**
 
-### Nei karto nepraleido balsavimo ir visada (61 kartą) balsavo PRIEŠ filibusterio pasiūlymus
+## Nei karto nepraleido balsavimo ir visada (61 kartą) balsavo PRIEŠ filibusterio pasiūlymus
 
 - Arūnas Dudėnas (išsuktas čekutininkas)
 - Tomas Martinaitis (čekutininkas)
@@ -131,19 +131,19 @@ Bet buvo ir jaunesnių anksti nuleidusių rankas:
 
 Nuo jų vos atsilieka 60 kartų PRIEŠ balsavę: Gintautas Paluckas, Dainius Gaižauskas, Algimantas Radvila, Jurgita Šukevičienė.
 
-### Daugiausiai kartų balsavo UŽ filibusterio pasiūlymus
+## Daugiausiai kartų balsavo UŽ filibusterio pasiūlymus
 
 - Lukas Savickas, demokratai (48 kartus)
 - Agnė Širinskienė, demokratai (45 kartus)
 - Aistė Gedvilienė, konservatoriai (45 kartus)
 - Viktorija Čmilytė-Nielsen, liberalai (43 kartus)
 
-### Daugiausiai kartų susilaikė
+## Daugiausiai kartų susilaikė
 
 - Andrius Bagdonas, liberalas (57 kartus)
 - Jevgenij Šuklin, liberalas (55 kartus)
 
-### Filibusteryje nedalyvavo apskritai
+## Filibusteryje nedalyvavo apskritai
 
 - Rūta Miliūtė, demokratai
 - Ričardas Juška, liberalai
