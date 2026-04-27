@@ -30,9 +30,9 @@ panel:
 copyright:
   # Shown at the bottom of the post
   license:
-    template: This post is licensed under :LICENSE_NAME by the author.
-    name: CC BY 4.0
-    link: https://creativecommons.org/licenses/by/4.0/
+    template: Turinio naudojimo sąlygos - :LICENSE_NAME.
+    name: CC BY-SA 4.0
+    link: https://creativecommons.org/licenses/by-sa/4.0/deed.lt
 
   # Displayed in the footer
   brief: Some rights reserved.
@@ -46,8 +46,8 @@ not_found:
   statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
 notification:
-  update_found: A new version of content is available.
-  update: Update
+  update_found: Ką tik publikuota nauja svetainės versija.
+  update: Atnaujinti
 
 # ----- Posts related labels -----
 
@@ -58,8 +58,8 @@ post:
   words: words
   pageview_measure: views
   read_time:
-    unit: min
-    prompt: skaitymo trukmė
+    unit: min 
+    prompt:  (skaitymo trukmė)
   relate_posts: Susiję postai
   share: Dalintis
   button:
@@ -71,15 +71,7 @@ post:
       title: Copy link
       succeed: Link copied successfully!
 
-# Date time format.
-# See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
-df:
-  post:
-    strftime: "%Y-%m-%d %T"
-    dayjs: "%Y-%m-%d %T"
-  archives:
-    strftime: "%b"
-    dayjs: "MMM"
+
 
 # categories page
 categories:
