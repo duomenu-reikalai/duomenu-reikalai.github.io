@@ -25,7 +25,7 @@ search:
 panel:
   lastmod: Naujausi postai
   trending_tags: Dažniausios temos
-  toc: Turinys
+  toc: Posto turinys
 
 #copyright:
 #  # Shown at the bottom of the post
@@ -52,16 +52,16 @@ notification:
 # ----- Posts related labels -----
 
 post:
-  written_by: 
+  written_by: ‎ 
   posted: Sukurta
   updated: Atnaujinta
   #words: words
   #pageview_measure: views
-  #read_time:
-  #  unit: min 
-  #  prompt:  (skaitymo trukmė)
+  read_time:
+    unit: min 
+    prompt:  (skaitymo trukmė)
   #relate_posts: Susiję postai
-  #share: Dalintis
+  share: Dalintis
   button:
     next: Naujesnis
     previous: Senesnis
