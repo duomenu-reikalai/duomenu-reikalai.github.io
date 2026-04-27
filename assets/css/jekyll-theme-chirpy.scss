@@ -1,6 +1,11 @@
 ---
 ---
-
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+/* lithuanian-compatible font for topbar */
 #topbar-title {
-  font-family: Lato, sans-serif;
+  font-family: Lato, "Microsoft Yahei", sans-serif;
 }
