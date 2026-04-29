@@ -8,7 +8,7 @@ pin: false
 math: false
 mermaid: false
 image:
-  path: /assets/img/sovietizmas/thumbnail.png
+  path: /assets/img/sovietizmas/thumbnail.jpg
   alt: ""
   no_bg: true
 ---
@@ -17,7 +17,7 @@ image:
 Praleidome valandų valandas ieškodami keistai pavadintų Lietuvos gatvių ir jas sistemindami. Svetainė [kalbagatves.lt](https://kalbagatves.lt/) yra šio darbo rezultatas. Kviečiame naršyti ir spręsti – ar daug turime sovietinių laikų palikimo.
 
 
-![kalbagatvės ekrano vaizdas](/assets/img/sovietizmas/img1.png)
+![kalbagatvės - ekrano vaizdas](/assets/img/sovietizmas/img1.png)
 
 ## Žemai kabantys vaisiai
 “Žemai kabantys vaisiai“ po Nepriklausomybės atgavimo buvo kaip mat lengvai nuraškyti: neliko nei *Lenino prospekto*, nei *Komjaunimo gatvės*, nei *Dzeržinskio*, *Suvorovo*, *Kapsuko* ar panašių kitų.

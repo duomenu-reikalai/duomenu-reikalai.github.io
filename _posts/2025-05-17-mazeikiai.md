@@ -1,5 +1,5 @@
 ---
-title: Ar Mažeikių vaikai yra narkomanai?
+title: Mažeikių vaikai narkomanai?
 description: Antroji priešiško drono skrydžio per Lietuvą analizės dalis – apie garso įrašų iš vaizdo kamerų panaudojimą trajektorijos tikslinimui.
 author: Statoras Datoras
 date: 2025-05-17 22:33:00 +0300
