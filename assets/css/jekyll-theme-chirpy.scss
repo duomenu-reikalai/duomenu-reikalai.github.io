@@ -6,10 +6,19 @@
 {%- endif -%}
 ';
 /* lithuanian-compatible font for topbar */
+
 #topbar-title {
   display: none;
 }
 
 header .preview-img {
+  display: none;
+}
+
+.post-tail-wrapper .license-wrapper {
+  display: none;
+}
+
+.post-tail-wrapper .share-wrapper {
   display: none;
 }
