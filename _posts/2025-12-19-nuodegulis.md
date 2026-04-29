@@ -4,7 +4,7 @@ description: Ši istorija yra apie tai, kaip filibusterio dėka Nuodėgulis vos 
 author: Statoras Datoras
 date: 2025-12-19 09:29:00 +0300
 tags: [politika]
-pin: true
+pin: false
 math: false
 mermaid: false
 image:
