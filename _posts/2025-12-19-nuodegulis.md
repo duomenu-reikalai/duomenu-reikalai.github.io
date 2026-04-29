@@ -41,7 +41,7 @@ Pirmiausia, įsidėmėkite šių spalvų reikšmes:
 
 Ir dabar pažiūrėkime į visus tos nakties balsavimo rezultatus:
 
-![](https://statorasdatoras.wordpress.com/wp-content/uploads/2025/12/image-5.png)
+![](/assets/img/filibusteris/img2.webp)
 
 Jei detalės per smulkios – [atsisiųskite geros kokybės failą pdf formatu][1]
 
@@ -49,22 +49,22 @@ Jei detalės per smulkios – [atsisiųskite geros kokybės failą pdf formatu][
 
 Širinskienės katino klausimas buvo 12-as. Ar jau matote, kas atsitiko? Performuokime duomenis taip, kad laiko tėkmėje matytųsi dalyvaujančių seimo narių skaičius:
 
-![](/assets/img/filibusteris/legenda.png)
+![](/assets/img/filibusteris/img3.png)
 
 Matome bangavimus, bendrą aktyvumo mažėjimą, ir matome vieną išskirtį – ties 21:30 – kuomet dalyvavusių Seimo narių skaičius nukrito nuo ~100 iki 77.
 
 Taip įvyko po pertraukos, kurios metu žurnalistai užfiksavo valdančiuosius Seimo kavinėje kiek per anksti geriančius pergalės šampaną:
 
-![](/assets/img/ltuuae/jae-flipping.png)
+![](/assets/img/filibusteris/img4.png)
 
 
 Dabar pažiūrėkime, kaip kito balsavusių UŽ skaičius tos nakties eigoje:
 
-![](/assets/img/ltuuae/jae-flipping.png)
+![](/assets/img/filibusteris/img5.png)
 
 Tas pats 12-asis balsavimas neturi jokio smuktelėjimo žemyn (kaip ir anksčiau, UŽ balsuoja apie 40 parlamentarų). Vadinasi opozicija dirbo kaip dirbusi. Tai valdantieji pamiršo balsuoti PRIEŠ. Jei į Seimo salę po pertraukos valdančiųjų būtų sugrįžta laiku, būtų spėta subalsuoti prieš Širinskienės katiną. Bet Seimo po pertraukos susidarė opozicijos dauguma. Balsavimo duomenų išklotinėje aiškiai matome tuos balsuoti nespėjusius valdančiuosius:
 
-![](/assets/img/ltuuae/jae-flipping.png)
+![](/assets/img/filibusteris/img6.webp)
 
 Tai 100% “nemuno aušros“ parlamentarų (įskaitant skardžių, gedvilą ir žemaitaitį) plius Sinica. Taip pat 17 socialdemokratų (įskaitant LRT užvaldymo architektą Palucką, taip pat aršius palaikytojus Orintą Leiputę, Ruslaną Baranovą, Lauryną Šedvytį, ministrus Zailskienę, Kauną). Panašu, kad šampaną per ilgai gėrė ir valstiečiai, ypatingai nemėgstantys LRT: Jankūnas, Vėgėlė, Ąžuolas, Ropė, Gaižauskas, Tamašunienė.
 
@@ -75,7 +75,7 @@ Dar kartą pabrėžkim ironiją: būtent šie valdantieji savo vienu pavėlavimu
 
 Atkreipkite dėmesį į pasikeitusius opozicijos balsavimus po Nuodėgulio įvykio:
 
-![](/assets/img/ltuuae/jae-flipping.png)
+![](/assets/img/filibusteris/img7.webp)
 
 
 Akivaizdu, kad opozicija niekada nesitikėjo, kad jų korekcijos bus priimtos (filibusterio metu svarbu tempti laiką, o ne pasiekti pergales balsavimais). Iki Nuodėgulio opozicija beveik vieningai ir žaismingai balsuodavo UŽ. Tačiau po Nuodėgulio visi pasimetė: kitame (13-ame) balsavime konservatoriai beveik vieningai balsavo PRIEŠ, vėliau persimetė į susilaikymus. Sunku pasakyti, kodėl opozicija taip sutriko, nes, kiekvienas priimta korekcija suteikia papildomų galimybių ateities filibusteriams.
@@ -88,7 +88,7 @@ Bet kuriuo atveju, gruodžio 16 d. 21:30 įvyko mažas stebuklas, kurio niekas n
 
 Dalyvavo dalyvavo, balsavo balsavo, bet link vidurnakčio nusprendė, kad viskas čia beprasmiška ir reikia eit miegot:
 
-![](/assets/img/ltuuae/jae-flipping.png)
+![](/assets/img/filibusteris/img8.png)
 
 
 Dažnai tai susiję su amžiumi (paryškinti – valdantieji):
