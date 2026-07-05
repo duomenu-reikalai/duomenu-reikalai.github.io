@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Skrydžių virš Vilniaus keliamo triukšmo analizė – anonimiškai pažymėkite vietą, kurioje girdėjote praskrendančius lėktuvus." />
+  <title>Lėktuvų triukšmas | Duomenų Reikalai</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #222;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin: 8px 0 4px 0;
+    }
+    .intro {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 16px 0 6px 0;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    #map {
+      height: 380px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      margin-top: 6px;
+    }
+    .map-hint {
+      font-weight: normal;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    #coords {
+      font-size: 0.9rem;
+      color: #333;
+      margin-top: 6px;
+      min-height: 1.2em;
+    }
+    button[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-family: inherit;
+      border: none;
+      border-radius: 4px;
+      background-color: #1a73e8;
+      color: #fff;
+      cursor: pointer;
+    }
+    button[type="submit"]:disabled {
+      background-color: #9bbcf2;
+      cursor: wait;
+    }
+    #status {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      min-height: 1.3em;
+    }
+    #status.ok { color: #188038; }
+    #status.err { color: #c5221f; }
+    .privacy {
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+    .noise-options {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .noise-btn {
+      flex: 1 1 130px;
+      padding: 10px 6px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #fff;
+      border: 2px solid var(--c);
+      border-radius: 6px;
+      color: #333;
+      cursor: pointer;
+    }
+    .noise-btn.selected {
+      background: var(--c);
+      color: var(--tc);
+      font-weight: bold;
+    }
+    /* SVG pin marker; color set from the q1 slider via element style */
+    .pin-icon svg { display: block; }
+    /* Marker awaiting refinement at house-level zoom.
+       Glow uses currentColor so it follows the pin color. */
+    .marker-unrefined {
+      animation: markerPulse 1.1s ease-in-out infinite;
+    }
+    @keyframes markerPulse {
+      0%   { opacity: 1;    filter: drop-shadow(0 0 0 currentColor); }
+      50%  { opacity: 0.45; filter: drop-shadow(0 0 10px currentColor); }
+      100% { opacity: 1;    filter: drop-shadow(0 0 0 currentColor); }
+    }
+    /* Honeypot: hidden from humans, visible to bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lėktuvų triukšmas</h1>
+    <p class="intro">
+      Vykdome matematinę skrydžių virš Vilniaus sukeliamo triukšmo analizę.
+      <strong>Jei konkrečioje vietoje girdėjote praskrendančius lėktuvus –
+      anonimiškai pasidalinkite šia informacija su mumis</strong>.
+      Tai padės validuoti jau turimus statistinius skrydžių triukšmo modelius.
+      Analizės rezultatus skelbsime netrukus.
+    </p>
+
+    <form id="surveyForm">
+      <label>1. Pažymėkite, iš kur girdėjote lėktuvų triukšmą
+        <span class="map-hint">(tik nežymėkite savo gyvenamo namo)</span>
+      </label>
+      <div id="map"></div>
+      <div id="coords"></div>
+
+      <label>2. Kokio stiprumo garsas pažymėtoje vietoje?</label>
+      <div class="noise-options" id="noiseOptions">
+        <button type="button" class="noise-btn" data-val="0" style="--c:#5EEB5B; --tc:#222;">matosi, bet nesigirdi</button>
+        <button type="button" class="noise-btn" data-val="1" style="--c:#FFC100; --tc:#222;">silpnai girdisi</button>
+        <button type="button" class="noise-btn" data-val="2" style="--c:#FF8200; --tc:#fff;">garsas trukdo</button>
+        <button type="button" class="noise-btn" data-val="3" style="--c:#FF0000; --tc:#fff;">labai garsu</button>
+      </div>
+
+      <label for="q2">3. Kitos detalės ar aplinkybės (neprivaloma)</label>
+      <textarea id="q2" name="q2" maxlength="1000"
+        placeholder="labai dažnai / retkarčiais / tik žiemą / tik lėktuvams kylant, bet ne leidžiantis / ..."></textarea>
+
+      <!-- Honeypot: humans never see or fill this -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="submit" id="submitBtn">Siųsti</button>
+      <div id="status"></div>
+    </form>
+
+    <p class="privacy">
+      Ši forma yra anoniminė: nerenkame vardų, el. pašto adresų ar kitų asmens duomenų –
+      įrašomi tik atsakymai ir pažymėtos vietos koordinatės. Duomenys naudojami
+      tik apibendrintai <a href="https://duomenureikalai.lt">duomenureikalai.lt</a> analizei.
+    </p>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwho6neZTqrRn40g3HyQUDVnyxFQapFLhB_Xb_RFNZW2LOoJ-dPFx-rUdV1YYlPs66JHw/exec';
+
+    // Lithuania bounding box – must match the server-side check in Apps Script
+    var LAT_MIN = 53.8, LAT_MAX = 56.5, LNG_MIN = 20.8, LNG_MAX = 27.0;
+
+    // Default viewport: Vilnius
+    var VILNIUS_BOUNDS = L.latLngBounds([54.54279, 25.09822], [54.76297, 25.43434]);
+    var map = L.map('map');
+    map.fitBounds(VILNIUS_BOUNDS);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+
+    var marker = null;
+    var coordsEl = document.getElementById('coords');
+    var noiseButtons = Array.from(document.querySelectorAll('.noise-btn'));
+    var COLORS = ['#5EEB5B', '#FFC100', '#FF8200', '#FF0000'];
+    var selectedNoise = null; // mandatory – no default answer
+
+    function pinColor() {
+      return selectedNoise === null ? '#888888' : COLORS[selectedNoise];
+    }
+
+    function pinIcon() {
+      return L.divIcon({
+        className: 'pin-icon',
+        iconSize: [30, 42],
+        iconAnchor: [15, 42],
+        tooltipAnchor: [0, -42],
+        html: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">' +
+              '<path d="M15 1 C7.3 1 1.5 7 1.5 14.5 C1.5 24 15 41 15 41 C15 41 28.5 24 28.5 14.5 C28.5 7 22.7 1 15 1 Z" ' +
+              'fill="' + pinColor() + '" stroke="#fff" stroke-width="1.5"/>' +
+              '<circle cx="15" cy="14.5" r="5" fill="#fff"/></svg>'
+      });
+    }
+
+    function updatePinColor() {
+      if (!marker) return;
+      var color = pinColor();
+      var el = marker.getElement();
+      if (el) {
+        var path = el.querySelector('path');
+        if (path) path.setAttribute('fill', color);
+        el.style.color = color; // drives the pulse glow (currentColor)
+      }
+    }
+
+    noiseButtons.forEach(function (b) {
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function () {
+        selectedNoise = Number(b.dataset.val);
+        noiseButtons.forEach(function (o) {
+          o.classList.toggle('selected', o === b);
+          o.setAttribute('aria-pressed', String(o === b));
+        });
+        updatePinColor();
+      });
+    });
+
+    // Marker pulses with a "Priartink ir patikslink" hint until the user has
+    // seen it at house-level zoom.
+    var ZOOM_REFINED = 14;
+    var refined = false;
+    var nudged = false; // one gentle reminder to refine before submitting
+
+    function updateRefineState() {
+      if (!marker) return;
+      if (!refined && map.getZoom() >= ZOOM_REFINED &&
+          map.getBounds().contains(marker.getLatLng())) {
+        refined = true;
+      }
+      var el = marker.getElement();
+      if (refined) {
+        if (el) el.classList.remove('marker-unrefined');
+        marker.closeTooltip();
+      } else {
+        if (el) el.classList.add('marker-unrefined');
+        marker.openTooltip();
+      }
+    }
+
+    function setPoint(latlng) {
+      if (marker) {
+        marker.setLatLng(latlng);
+      } else {
+        marker = L.marker(latlng, { draggable: true, icon: pinIcon() }).addTo(map);
+        marker.bindTooltip('Priartink ir patikslink', { permanent: true, direction: 'top' });
+        marker.on('dragend', function () { setPoint(marker.getLatLng()); });
+      }
+      coordsEl.textContent = 'Pažymėta: ' +
+        latlng.lat.toFixed(5) + ', ' + latlng.lng.toFixed(5);
+      refined = map.getZoom() >= ZOOM_REFINED;
+      nudged = false;
+      updatePinColor();
+      updateRefineState();
+    }
+
+    map.on('click', function (e) { setPoint(e.latlng); });
+    map.on('zoomend', updateRefineState);
+    map.on('moveend', updateRefineState);
+
+    var form = document.getElementById('surveyForm');
+    var btn = document.getElementById('submitBtn');
+    var statusEl = document.getElementById('status');
+
+    function showStatus(msg, cls) {
+      statusEl.textContent = msg;
+      statusEl.className = cls;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!marker) {
+        showStatus('Prašome pažymėti vietą žemėlapyje.', 'err');
+        return;
+      }
+      var p = marker.getLatLng();
+      if (p.lat < LAT_MIN || p.lat > LAT_MAX || p.lng < LNG_MIN || p.lng > LNG_MAX) {
+        showStatus('Pažymėta vieta turi būti Lietuvoje.', 'err');
+        return;
+      }
+      if (selectedNoise === null) {
+        showStatus('Prašome pasirinkti, kaip girdisi garsas (2 klausimas).', 'err');
+        return;
+      }
+      if (!refined && !nudged) {
+        nudged = true;
+        showStatus('Priartinkite žemėlapį ir patikslinkite vietą – arba spauskite „Siųsti“ dar kartą.', 'err');
+        return;
+      }
+
+      var payload = {
+        lat: p.lat,
+        lng: p.lng,
+        // String, not number: the Apps Script does `data.q1 || ''`, which
+        // would turn a numeric 0 (category 0) into an empty cell
+        q1: String(selectedNoise),
+        q2: document.getElementById('q2').value.trim(),
+        website: document.getElementById('website').value
+      };
+
+      btn.disabled = true;
+      showStatus('Siunčiama…', '');
+
+      // Body is a plain string → Content-Type: text/plain → no CORS preflight,
+      // which Apps Script cannot answer.
+      fetch(ENDPOINT, { method: 'POST', body: JSON.stringify(payload) })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            showStatus('Ačiū! Jūsų atsakymas įrašytas. Visiems prisidėjusiems padėkosime ir analitikos poste, kurį tikimės paskelbti netrukus.', 'ok');
+            form.reset();
+            if (marker) { map.removeLayer(marker); marker = null; }
+            refined = false;
+            nudged = false;
+            selectedNoise = null;
+            noiseButtons.forEach(function (o) {
+              o.classList.remove('selected');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            coordsEl.textContent = '';
+          } else {
+            showStatus('Klaida: ' + (data.error || 'nepavyko įrašyti.'), 'err');
+          }
+        })
+        .catch(function () {
+          showStatus('Nepavyko išsiųsti. Patikrinkite ryšį ir bandykite dar kartą.', 'err');
+        })
+        .finally(function () {
+          btn.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>
