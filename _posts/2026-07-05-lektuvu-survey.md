@@ -20,7 +20,7 @@ Ruošiamės skelbti matematinę lėktuvų sukeliamo triukšmo analizę. Bet būt
 
 Pažymėkite [šiame interaktyviame žemėlapyje](https://duomenureikalai.lt/pranesk) – kur būdami girdėjote lėktuvų triukšmą. Praneškite net ir tuo atveju, jei triukšmo negirdite, bet matote iš oro uosto išvykstančius ar į jį atvykstančius lėktuvus. Duomenų surinkimo žemėlapis atrodo taip:
 
-[![girdimo lėktuvų triukšmo pranešimų forma](/assets/img/xcohdihppt/img1.png "Apklausos formos preview")](https://duomenureikalai.lt/pranesk)
+[![gyventojų girdimo lėktuvų triukšmo pranešimų forma](/assets/img/xcohdihppt/img1.jpg "Apklausos formos preview")](https://duomenureikalai.lt/pranesk)
 
 
 Mūsų triukšmo modelis tiria tik Vilniaus teritoriją, bet galite pranešti apie triukšmą ir kitose vietose – tikėtina, kad ateityje panaudosime. Viskas maksimaliai **anonimiška**, nerašykite vardų ar telefonų ir pan. Jei lėktuvų triukšmas girdisi pro jūsų kambario langą – žymėkit atsitiktinį kaimyninį namą.
