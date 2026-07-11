@@ -34,12 +34,12 @@ Tik apie 10% gyventojų (nuo visų, skiriančių GPM paramą) remia politines pa
 
 Pirmiausia susipažinkite su naudojamu duomenų atvaizdavimo principu:
 
-![](/assets/img/zcqbzsrrpg/img1.jpg)
+![](/assets/img/zcqbzsrrpg/img1.jpg "Partijų rangai, vizualizavimo principas")
 
 
-## 10 Gyvybingų partijų
+## 10 gyvybingų partijų
 
-![](/assets/img/zcqbzsrrpg/img2.jpg)
+![](/assets/img/zcqbzsrrpg/img2.jpg "10 gyvybingų partijų rangai")
 
 - Jau ketvirtus metus iš eilės pagal rėmėjų skaičių lyderiai yra konservatoriai. Jie vieninteliai turi virš 10 tūkst. (net ~25 tūkst.) GPM rėmėjų.
 - Antrus metus iš eilės sparčiai auga Liberalų sąjūdžio rėmėjų skaičius, jie dabar antri.
@@ -56,7 +56,7 @@ Pirmiausia susipažinkite su naudojamu duomenų atvaizdavimo principu:
 
 Smagiausia, žinoma, tyrinėti politinio šiukšlyno iliustraciją ir stebėtis, kodėl vis dar yra žmonių, skiriančių šioms mirusioms ar merdėjančioms partijoms savo GPM.
 
-![](/assets/img/zcqbzsrrpg/img3.jpg)
+![](/assets/img/zcqbzsrrpg/img3.jpg, "Politinio šiukšlyno rangai")
 
 
 Čia galite įvertinti mūsų darbą:
